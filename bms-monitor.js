@@ -1,21 +1,22 @@
-function batteryIsOk(temperature, soc, chargeRate) {
-  let batteryStatus = {
-    isOk: true,
-    statusMessage: "",
-  };
-
-  if (temperature < 0 || temperature > 45) {
-    batteryStatus.isOk = false;
-    batteryStatus.statusMessage = "Temperature is out of range!";
-  } else if (soc < 20 || soc > 80) {
-    batteryStatus.isOk = false;
-    batteryStatus.statusMessage = "State of Charge is out of range!";
-  } else if (chargeRate > 0.8) {
-    batteryStatus.isOk = false;
-    batteryStatus.statusMessage = "Charge rate is out of range!";
+function checkRange(testValue, lowerBound, upperBound, parameterLabel) {
+  if (
+    (lowerBound !== null && testValue < lowerBound) ||
+    (upperBound !== null && testValue > upperBound)
+  ) {
+    return `${parameterLabel} is out of range!`;
   }
+  return "";
+}
 
-  return batteryStatus;
+function batteryIsOk(temperature, stateOfCharge, chargeRate) {
+  let statusMessage =
+    checkRange(temperature, 0, 45, "Temperature") ||
+    checkRange(stateOfCharge, 20, 80, "State of Charge") ||
+    checkRange(chargeRate, null, 0.8, "Charge Rate");
+  return {
+    isOk: statusMessage === "",
+    statusMessage: statusMessage,
+  };
 }
 
 module.exports = { batteryIsOk };
