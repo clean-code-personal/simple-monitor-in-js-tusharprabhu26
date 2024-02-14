@@ -1,9 +1,13 @@
 function checkRange(testValue, lowerBound, upperBound, parameterLabel) {
-  if (
-    (lowerBound !== null && testValue < lowerBound) ||
-    (upperBound !== null && testValue > upperBound)
-  ) {
-    return `${parameterLabel} is out of range!`;
+  let breach = "";
+  let breachType =
+    lowerBound !== null && testValue < lowerBound
+      ? "low"
+      : upperBound !== null && testValue > upperBound
+      ? "high"
+      : "";
+  if (breachType) {
+    return `${parameterLabel} is too ${breachType}!`;
   }
   return "";
 }
