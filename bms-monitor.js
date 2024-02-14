@@ -1,6 +1,8 @@
-const { checkTemperature } = require("./utils/checkTemperature");
-const { checkStateOfCharge } = require("./utils/checkStateOfCharge");
-const { checkChargeRate } = require("./utils/checkChargeRate");
+const {
+  checkTemperature,
+  checkStateOfCharge,
+  checkChargeRate,
+} = require("./batteryChecks");
 
 function batteryIsOk(temperature, stateOfCharge, chargeRate) {
   let statusMessage =
