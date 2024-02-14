@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const { batteryIsOk } = require("../src/bms-monitor");
+const { batteryIsOk } = require("../bms-monitor");
 
 describe("Battery Monitor", function () {
   // All parameters too high
