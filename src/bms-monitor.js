@@ -1,4 +1,4 @@
-const { checkParameter } = require("./utils/checkParameters");
+const { checkParameter } = require("./utils/batteryParameters");
 
 function batteryIsOk(parameters) {
   let statusMessage = "";

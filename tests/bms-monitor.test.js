@@ -1,34 +1,9 @@
 const { expect } = require("chai");
 const { batteryIsOk } = require("../src/bms-monitor");
+const { parameters } = require("../src/utils/batteryParameters");
 
 describe("Battery Monitor", function () {
-  const parameters = [
-    {
-      name: "Temperature",
-      value: 25,
-      lowerBound: 0,
-      upperBound: 45,
-      lowMessage: "too low",
-      highMessage: "too high",
-    },
-    {
-      name: "State of Charge",
-      value: 50,
-      lowerBound: 20,
-      upperBound: 80,
-      lowMessage: "too low",
-      highMessage: "too high",
-    },
-    {
-      name: "Charge Rate",
-      value: 0.5,
-      lowerBound: null, //because chargeRate has no lower bound
-      upperBound: 0.8,
-      lowMessage: "too low",
-      highMessage: "too high",
-    },
-  ];
-
+  
   const testCases = [
     { values: [-10, 10, -0.1], expected: false },
     { values: [-10, 10, 0.7], expected: false },
@@ -72,11 +47,12 @@ describe("Battery Monitor", function () {
     it(`should return ${testCase.expected} for test case ${
       index + 1
     }`, function () {
-      const testParameters = parameters.map((parameter, i) => ({
-        ...parameter,
-        value: testCase.values[i],
-      }));
-      let batteryCheckStatus = batteryIsOk(testParameters);
+      let batteryCheckStatus = batteryIsOk(
+        parameters.map((parameter, i) => ({
+          ...parameter,
+          value: testCase.values[i],
+        }))
+      );
       expect(batteryCheckStatus.isOk).to.equal(testCase.expected);
       console.log(
         `Test case ${index + 1}: ${batteryCheckStatus.statusMessage}`
