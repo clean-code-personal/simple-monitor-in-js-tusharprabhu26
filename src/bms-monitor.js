@@ -8,10 +8,14 @@ function batteryIsOk(parameters) {
       statusMessage += `${parameter.name} is ${message}. `;
     }
   });
+  if (statusMessage === "") {
+    statusMessage = "All parameters are within range.";
+  }
   return {
-    isOk: statusMessage === "",
+    isOk: statusMessage === "All parameters are within range.",
     statusMessage: statusMessage,
   };
 }
+
 
 module.exports = { batteryIsOk };
