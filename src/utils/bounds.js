@@ -1,15 +1,28 @@
-function checkLowerBound(testValue, lowerBound, message) {
-  if (lowerBound !== null && testValue < lowerBound) {
-    return message;
+function checkBounds(
+  testValue,
+  lowerBound,
+  upperBound,
+  lowMessage,
+  highMessage
+) {
+  const conditions = [
+    {
+      check: () => lowerBound !== null && testValue < lowerBound,
+      result: lowMessage,
+    },
+    {
+      check: () => upperBound !== null && testValue > upperBound,
+      result: highMessage,
+    },
+  ];
+
+  for (let condition of conditions) {
+    if (condition.check()) {
+      return condition.result;
+    }
   }
-  return "";
+
+  return "within range";
 }
 
-function checkUpperBound(testValue, upperBound, message) {
-  if (upperBound !== null && testValue > upperBound) {
-    return message;
-  }
-  return "";
-}
-
-module.exports = { checkLowerBound, checkUpperBound };
+module.exports = { checkBounds };

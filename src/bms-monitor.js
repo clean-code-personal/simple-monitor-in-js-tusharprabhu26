@@ -1,12 +1,13 @@
-const { checkTemperature } = require("./utils/checkTemperature");
-const { checkStateOfCharge } = require("./utils/checkStateOfCharge");
-const { checkChargeRate } = require("./utils/checkChargeRate");
+const { checkParameter } = require("./utils/checkParameters");
 
-function batteryIsOk(temperature, stateOfCharge, chargeRate) {
-  let statusMessage =
-    checkTemperature(temperature) ||
-    checkStateOfCharge(stateOfCharge) ||
-    checkChargeRate(chargeRate);
+function batteryIsOk(parameters) {
+  let statusMessage = "";
+  parameters.forEach((parameter) => {
+    let message = checkParameter(parameter);
+    if (message !== "within range") {
+      statusMessage += `${parameter.name} is ${message}. `;
+    }
+  });
   return {
     isOk: statusMessage === "",
     statusMessage: statusMessage,
