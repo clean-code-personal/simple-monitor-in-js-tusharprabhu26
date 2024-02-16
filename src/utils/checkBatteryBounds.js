@@ -26,15 +26,15 @@ function checkBounds(
   return "within range";
 }
 
-function checkParameter(parameter) {
+function checkParameter(parameter, language) {
   return checkBounds(
     parameter.value,
     parameter.lowerBound,
     parameter.upperBound,
-    parameter.lowMessage,
-    parameter.highMessage,
-    parameter.warningLowMessage,
-    parameter.warningHighMessage
+    parameter[language].lowMessage,
+    parameter[language].highMessage,
+    parameter[language].warningLowMessage,
+    parameter[language].warningHighMessage
   );
 }
 
