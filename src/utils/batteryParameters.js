@@ -1,65 +1,35 @@
 const parameters = [
   {
     name: "Temperature",
-    value: 25,
     lowerBound: 0,
     upperBound: 45,
-    lowMessage: "too low",
-    highMessage: "too high",
+    lowMessage: "Temperature is too low",
+    highMessage: "Temperature is too high",
+    warningLowMessage: "Warning: Temperature is approaching lower limit (0°C)",
+    warningHighMessage:
+      "Warning: Temperature is approaching upper limit (45°C)",
   },
   {
     name: "State of Charge",
-    value: 50,
     lowerBound: 20,
     upperBound: 80,
-    lowMessage: "too low",
-    highMessage: "too high",
+    lowMessage: "State of Charge is too low",
+    highMessage: "State of charge is too high",
+    warningLowMessage:
+      "Warning: State of Charge is approaching discharge (20%)",
+    warningHighMessage:
+      "Warning: State of Charge is approaching charge-peak (80%)",
   },
   {
     name: "Charge Rate",
-    value: 0.5,
     lowerBound: null, //because chargeRate has no lower bound
     upperBound: 0.8,
-    lowMessage: "too low",
-    highMessage: "too high",
+    lowMessage: null,
+    highMessage: "Charge rate is too high",
+    warningLowMessage: null,
+    warningHighMessage:
+      "Warning: Charge Rate is approaching charge-peak (0.8C)",
   },
 ];
 
-function checkBounds(
-  testValue,
-  lowerBound,
-  upperBound,
-  lowMessage,
-  highMessage
-) {
-  const conditions = [
-    {
-      check: () => lowerBound !== null && testValue < lowerBound,
-      result: lowMessage,
-    },
-    {
-      check: () => upperBound !== null && testValue > upperBound,
-      result: highMessage,
-    },
-  ];
-
-  for (let condition of conditions) {
-    if (condition.check()) {
-      return condition.result;
-    }
-  }
-
-  return "within range";
-}
-
-function checkParameter(parameter) {
-  return checkBounds(
-    parameter.value,
-    parameter.lowerBound,
-    parameter.upperBound,
-    parameter.lowMessage,
-    parameter.highMessage
-  );
-}
-
-module.exports = { parameters, checkParameter };
+module.exports = { parameters };

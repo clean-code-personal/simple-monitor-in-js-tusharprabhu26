@@ -1,11 +1,11 @@
-const { checkParameter } = require("./utils/batteryParameters");
+const { checkParameter } = require("./utils/checkBatteryBounds");
 
 function batteryIsOk(parameters) {
   let statusMessage = "";
   parameters.forEach((parameter) => {
     let message = checkParameter(parameter);
     if (message !== "within range") {
-      statusMessage += `${parameter.name} is ${message}. `;
+      statusMessage += `${message}. `;
     }
   });
   if (statusMessage === "") {
