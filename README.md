@@ -69,3 +69,11 @@ Example: If the SoC needs to be between 20 and 80, the warning-tolerance is `5%`
 Same for Temperature and Charge-rate.
 
 Keep in mind: Though we are starting with warning levels for all parameters, customers may give feedback to have warnings only for some parameters and not others. Minimize the change needed for such ‘tuning’.
+
+## Extension 2: Support a language in addition to English
+
+Our market has expanded to German-speaking countries! Switch the language of the printed user-messages based on a global variable.
+
+Use [Google translate](https://translate.google.com/?sl=en&tl=de&op=translate) if you aren’t familiar with German.
+
+Keep in mind: We could add more languages in future. Minimize the code-change required.
