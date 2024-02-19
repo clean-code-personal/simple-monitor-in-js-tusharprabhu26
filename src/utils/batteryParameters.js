@@ -77,20 +77,28 @@ const parameters = [
     upperBound: 0.8,
     en: {
       highMessage: "Charge rate is too high",
+      lowMessage: "",
+      warningLowMessage: "",
       warningHighMessage:
         "Warning: Charge Rate is approaching charge-peak (0.8C)",
     },
     de: {
       highMessage: "Der Ladestrom ist zu hoch",
+      lowMessage: "",
+      warningLowMessage: "",
       warningHighMessage:
         "Warnung: Laderate nähert sich dem Ladehöchstwert (0,8C)",
     },
     ar: {
       highMessage: "معدل الشحن مرتفع جدًا",
+      lowMessage: "",
+      warningLowMessage: "",
       warningHighMessage: "تحذير: معدل الشحن يقترب من ذروة الشحن (0.8C)",
     },
     ms: {
       highMessage: "Kadar cas terlalu tinggi",
+      lowMessage: "",
+      warningLowMessage: "",
       warningHighMessage: "Amaran: Kadar cas mendekati puncak cas (0.8C)",
     },
   },
