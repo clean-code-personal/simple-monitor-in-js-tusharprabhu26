@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "mocha tests/bms-monitor.test.js"
+    "test": "mocha tests/bms-monitor.test.js && mocha tests/validateStructure.test.js"
   },
   "devDependencies": {
     "chai": "^4.3.6",
