@@ -24,4 +24,4 @@ function batteryIsOk(parameters) {
 }
 
 
-module.exports = { batteryIsOk };
+module.exports = { batteryIsOk, language };
